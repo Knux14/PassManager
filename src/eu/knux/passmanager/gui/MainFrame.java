@@ -136,11 +136,15 @@ public class MainFrame extends JFrame {
 			public void valueChanged(TreeSelectionEvent e) {
 				TreePath tp = pswdTree.getSelectionPath();
 				DefaultMutableTreeNode selected = (DefaultMutableTreeNode)tp.getLastPathComponent();
+				JPanel panel = null;
 				if (selected.getUserObject() instanceof Category){
 					Category c = (Category)selected.getUserObject();	
 				} else if(selected.getUserObject() instanceof Password) {
 					Password p = (Password)selected.getUserObject();
+					rightPanel = new PanelPassword(p, false);
 				}
+				rightPanel = panel;
+				splitView.setRightComponent(rightPanel);
 			}
 		});
 	}
