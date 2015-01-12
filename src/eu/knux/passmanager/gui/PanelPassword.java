@@ -1,12 +1,12 @@
 package eu.knux.passmanager.gui;
 
-import javax.swing.GroupLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
+import net.miginfocom.swing.MigLayout;
 import eu.knux.passmanager.Objects.Password;
 
 public class PanelPassword extends JPanel {
@@ -24,7 +24,7 @@ public class PanelPassword extends JPanel {
 	public PanelPassword(Password p, boolean editMode) {
 		this.pass = p;
 		this.editMode = editMode;
-
+		
 		username 	  = new JLabel("Username: ");
 		password 	  = new JLabel("Password: ");
 		comment  	  = new JLabel("Comment:");
@@ -36,43 +36,18 @@ public class PanelPassword extends JPanel {
 		edit 		  = new JButton("Edit");
 		genPass 	  = new JButton("Generate password");
 
-		GroupLayout gl = new GroupLayout(this);
+		setLayout(new MigLayout());
 
-		gl.setAutoCreateContainerGaps(true);
-		gl.setAutoCreateGaps(true);
-
-		setLayout(gl);
-		gl.setVerticalGroup(gl.createSequentialGroup()
-								.addGroup(gl.createParallelGroup()
-										 	.addComponent(username)
-										 	.addComponent(usernameField)
-										 )
-							    .addGroup(gl.createParallelGroup()
-							    		 	.addComponent(password)
-							    		 	.addComponent(passwordField)
-							    		 )
-							    .addGroup(gl.createParallelGroup()
-							    		 	.addComponent(comment)
-							    		 	.addComponent(commentArea)
-							    		 )
-							 );
-		gl.setHorizontalGroup(gl.createSequentialGroup()
-	            .addGroup(gl.createParallelGroup()
-	            		.addComponent(component))
-	            .addGroup(gl.createParallelGroup()
-	                .addComponent(textField)
-	                .addGroup(gl.createSequentialGroup()
-	                    .addGroup(gl.createParallelGroup()
-	                        .addComponent(caseCheckBox)
-	                        .addComponent(wholeCheckBox))
-	                    .addGroup(gl.createParallelGroup()
-	                        .addComponent(wrapCheckBox)
-	                        .addComponent(backCheckBox))))
-	            .addGroup(gl.createParallelGroup()
-	                .addComponent(findButton)
-	                .addComponent(cancelButton))
-	        );
-
+		add(username);
+		add(usernameField);
+		add(copyUser, "wrap");
+		add(password);
+		add(passwordField);
+		add(copyPassword);
+		add(genPass, "wrap");
+		add(comment);
+		add(commentArea, "wrap");
+		
 		updateMode();
 	}
 

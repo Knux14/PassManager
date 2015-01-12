@@ -141,7 +141,7 @@ public class MainFrame extends JFrame {
 					Category c = (Category)selected.getUserObject();	
 				} else if(selected.getUserObject() instanceof Password) {
 					Password p = (Password)selected.getUserObject();
-					rightPanel = new PanelPassword(p, false);
+					rightPanel = new PanelPasswd(p, false);
 				}
 				rightPanel = panel;
 				splitView.setRightComponent(rightPanel);
